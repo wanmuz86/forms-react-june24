@@ -4,7 +4,7 @@ const ControlledForm = () => {
 
     const [formData,setFormData] = useState({name:'',email:'',message:''})
 
-    const [error, setError] = useState(null);
+    const [error, setError] = useState({name:null, email:null});
 
     const handleChange = (e) => {
 
@@ -21,14 +21,21 @@ const ControlledForm = () => {
         e.preventDefault()
         // For example we weill call an API here fetch, axios
 
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
         if (formData.name.length < 5){
-            setError('name cannot be less than 5 characters')
+            setError({...error,name:'name cannot be less than 5 characters'})
+            return
         }
-        else {
+        if (formData.email && emailRegex.test(formData.email) ) {
+            setError({...error,email:'Please enter the correct format'})
+            return
+        }
+     
             console.log(formData.name)
             console.log(formData.email)
             console.log(formData.message)
-        }
+        
        
     }
 
@@ -42,11 +49,12 @@ const ControlledForm = () => {
             <div>
                 <label htmlFor="name">Name:</label>
                 <input type="text" id='name' name='name' value={formData.name} onChange={handleChange} />
-                {error && <p style={{color:'red'}}>{error}</p>}
+                {error.name && <p style={{color:'red'}}>{error.name}</p>}
             </div>
             <div>
                 <label htmlFor="email">Email:</label>
-                <input type="email" id='email' name='email' value={formData.email} onChange={handleChange} />
+                <input type="text" id='email' name='email' value={formData.email} onChange={handleChange} />
+                {error.email && <p style={{color:'red'}}>{error.email}</p>}
             </div>
             <div>
                 <label htmlFor="name">Message:</label>
