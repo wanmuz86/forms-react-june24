@@ -33,13 +33,25 @@ function App() {
 
   const handleColorChange = (val)  => {
     val.isChecked = !val.isChecked //Updating the property is check of val in the array 
-    setColors([...colors])
+    setColors([...colors]) // setState the colors
+  }
+
+  // Radio buttons
+
+  // For Radio we will use the same options as our drop down menu
+  // But the value selected by user will be stored in this state/variable
+
+  const [radioGender, setRadioGender] = useState('male'); 
+
+  const handleRadioChange = (e) => {
+    setRadioGender(e.target.value)
   }
 
   const buttonClick = () => {
     console.log(name)
     console.log(gender)
     console.log(colors)
+    console.log(radioGender)
   }
 
   return (
@@ -69,6 +81,21 @@ function App() {
             </li>
             )
         }
+      </div>
+
+      <div>
+        <p>Select a gender</p>
+        <div>
+        {
+          options.map(val=>{
+            <div key={val.value} >
+              <input type='radio' value={val.value} name="gender"
+              onChange={handleRadioChange} />
+              {val.name}
+              </div>
+          })
+        }
+        </div>
       </div>
       <button onClick={buttonClick}>Click me</button>
     </div>
