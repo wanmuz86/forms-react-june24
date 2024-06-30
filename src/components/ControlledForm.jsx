@@ -22,19 +22,31 @@ const ControlledForm = () => {
         // For example we weill call an API here fetch, axios
 
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        const error = {name:null, email:null}
 
-        if (formData.name.length < 5){
-            setError({...error,name:'name cannot be less than 5 characters'})
-            return
+        let hasError  = false
+
+        if (!formData.name || formData.name.length < 5){
+            error.name = 'name cannot be less than 5 characters'
+            hasError = true
+            
         }
-        if (formData.email && emailRegex.test(formData.email) ) {
-            setError({...error,email:'Please enter the correct format'})
-            return
+        // emailRegex.test will return true if it follows the format
+        // if it does not follow the format  !emailRegex.test()
+        if (!formData.email || !emailRegex.test(formData.email) ) {
+            error.email = 'Please enter the correct format'
+            hasError = true
+            console.log(error)
+            
         }
-     
+        setError(error)
+        if (!hasError) {
             console.log(formData.name)
             console.log(formData.email)
             console.log(formData.message)
+        }
+       
+            
         
        
     }
