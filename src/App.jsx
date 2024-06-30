@@ -2,6 +2,7 @@
 import './App.css'
 import ControlledInput from './components/ControlledInput'
 import ControlledForm from './components/ControlledForm'
+import UncontrolledForm from './components/UncontrolledForm'
 function App() {
 
  
@@ -11,6 +12,8 @@ function App() {
       <ControlledInput/>
       <hr />
       <ControlledForm/>
+      <hr />
+      <UncontrolledForm/>
      
     </div>
   )
