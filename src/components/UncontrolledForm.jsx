@@ -9,8 +9,12 @@ const UncontrolledForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+
+        // document.getElementById("").value // AS if we are doing DOM manipulation in ReactJS
         console.log(`Name value ${nameRef.current.value}`)
+         // document.getElementById("").value
         console.log(`Color value ${selectRef.current.value}`)
+         // document.getElementById("").checked
         console.log(`Checkbox value ${checkboxRef.current.checked}`)
     }
 

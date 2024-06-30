@@ -22,6 +22,10 @@ const ControlledForm = () => {
         // For example we weill call an API here fetch, axios
 
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+        // I need to reset everytime the error message in my form
+        // If I don't do it , the form will not be updated with the error and also if user already fix the error
+        
         const error = {name:null, email:null}
 
         let hasError  = false
@@ -39,15 +43,14 @@ const ControlledForm = () => {
             console.log(error)
             
         }
+        // set the state of the form
         setError(error)
+
         if (!hasError) {
             console.log(formData.name)
             console.log(formData.email)
             console.log(formData.message)
         }
-       
-            
-        
        
     }
 
