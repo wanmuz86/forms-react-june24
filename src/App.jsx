@@ -4,6 +4,8 @@ import ControlledInput from './components/ControlledInput'
 import ControlledForm from './components/ControlledForm'
 import UncontrolledForm from './components/UncontrolledForm'
 import ReactHookForm from './components/ReactHookForm'
+import ReactHookCreatorForm from './components/ReactHookCreatorForm'
+
 function App() {
 
  
@@ -17,6 +19,8 @@ function App() {
       <UncontrolledForm/>
       <hr />
       <ReactHookForm/>
+      <hr />
+      <ReactHookCreatorForm/>
      
     </div>
   )
