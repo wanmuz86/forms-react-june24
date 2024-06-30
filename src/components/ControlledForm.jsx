@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 
 const ControlledForm = () => {
 
-    const [formData,setFormData] = useState({name:'',email:'',message:''})
+    const [formData,setFormData] = useState({name:'',email:'',message:'',action:''})
 
     const [error, setError] = useState({name:null, email:null});
 
@@ -45,11 +45,13 @@ const ControlledForm = () => {
         }
         // set the state of the form
         setError(error)
+        setFormData({...formData, action:"save"});
 
         if (!hasError) {
             console.log(formData.name)
             console.log(formData.email)
             console.log(formData.message)
+            console.log(formData.action)
         }
        
     }
@@ -75,6 +77,7 @@ const ControlledForm = () => {
                 <label htmlFor="name">Message:</label>
                 <textarea id='message' name='message' value={formData.message} onChange={handleChange} />
             </div>
+            <input type="hidden" name="action" id="action" value={formData.action} />
             <button type='submit'>Submit</button>
         </form>
     </div>

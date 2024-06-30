@@ -34,6 +34,7 @@ const ReactHookForm = () => {
                     <input type="password" id='password' {...register('password',{required:true,  minLength:6})}/>
                     { errors.password && <p style={{color:'red'}}>Password is required and need to be more than 6 characters</p>}
                 </div>
+                
                 <button type="submit">Submit</button>
 
 
