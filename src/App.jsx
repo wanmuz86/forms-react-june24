@@ -32,7 +32,7 @@ function App() {
   ])
 
   const handleColorChange = (val)  => {
-    val.isChecked = !val.isChecked
+    val.isChecked = !val.isChecked //Updating the property is check of val in the array 
     setColors([...colors])
   }
 
