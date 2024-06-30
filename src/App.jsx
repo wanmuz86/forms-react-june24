@@ -11,7 +11,7 @@ function App() {
   // e (reference to the form)
   const handleChange = (e) => setName(e.target.value);
   
-  // The options for my select
+  // Options
   const options = [{ name: "Male", value: "male" }, { name: "Female", value: "female" }, {
     name: "Prefer not to disclosed",
     value: "nodisclose"
@@ -21,9 +21,25 @@ function App() {
 
   const handleGenderChange = (e) => setGender(e.target.value)
 
+  // Checkboxes
+
+  const [colors, setColors] = useState([
+    {name:"Blue", isChecked:false },
+    {name:"Red", isChecked:false },
+    {name:"Green", isChecked:false },
+    {name:"Yellow", isChecked:false },
+
+  ])
+
+  const handleColorChange = (val)  => {
+    val.isChecked = !val.isChecked
+    setColors([...colors])
+  }
+
   const buttonClick = () => {
     console.log(name)
     console.log(gender)
+    console.log(colors)
   }
 
   return (
@@ -40,6 +56,19 @@ function App() {
             options.map(val=> <option value={val.value} key={val.value}>{val.name}</option>)
           }
         </select>
+      </div>
+
+      <div>
+        <label htmlFor="color">Select your preferred color</label>
+        {
+          colors.map(val=>
+            <li key={val.name}>
+              <input type='checkbox' name='colors' checked={val.isChecked}
+              onChange={()=> handleColorChange(val)}/>
+              <label>{val.name}</label>
+            </li>
+            )
+        }
       </div>
       <button onClick={buttonClick}>Click me</button>
     </div>
