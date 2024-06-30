@@ -1,10 +1,10 @@
 import React,{useState} from 'react'
 
-
-
 const ControlledForm = () => {
 
     const [formData,setFormData] = useState({name:'',email:'',message:''})
+
+    const [error, setError] = useState(null);
 
     const handleChange = (e) => {
 
@@ -20,9 +20,16 @@ const ControlledForm = () => {
         // Override the normal submit behavior of SSR with SPA
         e.preventDefault()
         // For example we weill call an API here fetch, axios
-        console.log(formData.name)
-        console.log(formData.email)
-        console.log(formData.message)
+
+        if (formData.name.length < 5){
+            setError('name cannot be less than 5 characters')
+        }
+        else {
+            console.log(formData.name)
+            console.log(formData.email)
+            console.log(formData.message)
+        }
+       
     }
 
 
@@ -35,6 +42,7 @@ const ControlledForm = () => {
             <div>
                 <label htmlFor="name">Name:</label>
                 <input type="text" id='name' name='name' value={formData.name} onChange={handleChange} />
+                {error && <p style={{color:'red'}}>{error}</p>}
             </div>
             <div>
                 <label htmlFor="email">Email:</label>
